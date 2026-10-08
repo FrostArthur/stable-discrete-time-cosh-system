@@ -53,31 +53,6 @@ $$b + |d| < 0 \quad\Longleftrightarrow\quad b < -|d|$$
 Condiciones iniciales: $y(0) = \frac{a}{k}\,x(0) = a$, que coincide con
 $a\,e^{0}\cosh(0) = a$.
 
-## Implementación (Python)
-
-```python
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.signal import lfilter
-
-k, a, b, d = 2.0, 3.0, -0.05, 0.03   # estable: b < -|d|
-N = 150                               # >= 100 puntos
-n = np.arange(N)
-x = k * np.ones(N)                    # x(n) = k·μ(n)
-
-c   = np.exp(b) * np.cosh(d)
-num = (a / k) * np.array([1, -(1 + c), c])
-den = np.array([1, -2 * c, np.exp(2 * b)])
-
-y = lfilter(num, den, x)                       # salida del sistema
-y_teo = a * np.exp(b * n) * np.cosh(d * n)     # salida esperada
-assert np.allclose(y, y_teo)
-
-plt.stem(n, x, linefmt="C0-", markerfmt="C0o", label="x(n)")
-plt.stem(n, y, linefmt="C3-", markerfmt="C3o", label="y(n)")
-plt.xlabel("n"); plt.legend(); plt.grid(True); plt.show()
-```
-
 ## Estructura del repositorio
 
 ```
