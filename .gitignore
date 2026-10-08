@@ -1,0 +1,22 @@
+# VSCode
+.vscode/
+*.code-workspace
+.history/
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# Matlab
+*.asv
+*.autosave
+*.mex*
+slprj/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
