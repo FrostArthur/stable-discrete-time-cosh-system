@@ -63,8 +63,10 @@ donde $c=e^b\cosh(d)$. Se asumen condiciones iniciales nulas y la entrada escal�
 $x(n)=k\mu(n)$ comienza en $n=0$. La implementación comprueba que el sistema sea
 estable ($b<-|d|$), que $k\ne0$ y que se generen al menos 100 muestras.
 
-La aplicación dibuja la entrada y la salida como señales discretas en dos gráficas
-separadas. Los parámetros se pueden cambiar desde la línea de comandos.
+La aplicación ofrece una interfaz gráfica para ingresar `k`, `a`, `b`, `d` y el
+número de puntos. Al generar las señales, muestra la entrada y la salida como
+señales discretas en dos gráficas independientes. Los parámetros iniciales son
+`k=1`, `a=1`, `b=-0.05`, `d=0.02` y `200` puntos.
 
 ## Estructura del repositorio
 
@@ -84,8 +86,5 @@ pip install numpy matplotlib
 python main.py
 ```
 
-Ejemplo con parámetros explícitos:
-
-```bash
-python main.py --a 1 --b -0.05 --d 0.02 --k 1 --samples 200
-```
+La interfaz valida las mismas condiciones que el núcleo: `k` distinto de cero,
+al menos 100 puntos y estabilidad (`b < -|d|`).
