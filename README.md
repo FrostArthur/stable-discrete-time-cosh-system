@@ -53,13 +53,28 @@ $$b + |d| < 0 \quad\Longleftrightarrow\quad b < -|d|$$
 Condiciones iniciales: $y(0) = \frac{a}{k}\,x(0) = a$, que coincide con
 $a\,e^{0}\cosh(0) = a$.
 
+## Implementación en Python
+
+El núcleo calcula la salida muestra por muestra usando la ecuación en diferencias:
+
+$$y(n)=2c\,y(n-1)-e^{2b}y(n-2)+\frac{a}{k}\left[x(n)-(1+c)x(n-1)+cx(n-2)\right]$$
+
+donde $c=e^b\cosh(d)$. Se asumen condiciones iniciales nulas y la entrada escalón
+$x(n)=k\mu(n)$ comienza en $n=0$. La implementación comprueba que el sistema sea
+estable ($b<-|d|$), que $k\ne0$ y que se generen al menos 100 muestras.
+
+La aplicación ofrece una interfaz gráfica para ingresar `k`, `a`, `b`, `d` y el
+número de puntos. Al generar las señales, muestra la entrada y la salida como
+señales discretas en dos gráficas independientes. Los parámetros iniciales son
+`k=1`, `a=1`, `b=-0.05`, `d=0.02` y `200` puntos.
+
 ## Estructura del repositorio
 
 ```
 .
-├── lab2.py          # implementación del sistema
-├── lab2.m           # (opcional) versión Matlab
-├── informe/         # informe estilo IEEE
+├── core/core.py     # ecuación en diferencias y generación de señales
+├── gui/interface.py # gráficas de entrada y salida
+├── main.py          # punto de entrada de la aplicación
 ├── .gitignore
 └── README.md
 ```
@@ -67,6 +82,9 @@ $a\,e^{0}\cosh(0) = a$.
 ## Ejecución
 
 ```bash
-pip install numpy scipy matplotlib
-python lab2.py
+pip install numpy matplotlib
+python main.py
 ```
+
+La interfaz valida las mismas condiciones que el núcleo: `k` distinto de cero,
+al menos 100 puntos y estabilidad (`b < -|d|`).
