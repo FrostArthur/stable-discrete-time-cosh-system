@@ -23,7 +23,8 @@ La aplicación incluye una interfaz gráfica (Tkinter + Matplotlib) para variar 
 - Sistema de orden 2 obtenido analíticamente a partir de la salida deseada.
 - Cálculo muestra por muestra mediante la ecuación en diferencias, con condiciones iniciales nulas.
 - Validación de parámetros: `k ≠ 0`, mínimo 100 muestras y estabilidad (`b < -|d|`).
-- Interfaz gráfica con dos gráficas independientes (entrada y salida) en formato discreto (`stem`).
+- Interfaz gráfica con constantes en un panel lateral y gráficas de entrada y salida apiladas en formato discreto (`stem`).
+- Zoom y desplazamiento independientes en cada gráfica mediante la barra de herramientas de Matplotlib.
 - Núcleo de cálculo separado de la interfaz, reutilizable sin GUI.
 
 ## Instalación y ejecución
@@ -37,7 +38,7 @@ python main.py
 
 > **Nota:** Tkinter viene incluido con Python en Windows y macOS. En Linux puede requerir instalarlo aparte, por ejemplo `sudo apt install python3-tk`.
 
-Al abrir la aplicación se generan automáticamente las gráficas con los valores por defecto. Para cambiarlos, edita los campos y pulsa **Generar gráficas**.
+Al abrir la aplicación se generan automáticamente las gráficas con los valores por defecto. Para cambiarlos, edita los campos del panel **Constantes del sistema** y pulsa **Generar gráficas**. Usa el botón **Zoom** de la barra bajo cada gráfica y arrastra sobre la zona que quieras ampliar; **Pan** permite desplazarte y **Home** restablece la vista.
 
 ## Parámetros
 
